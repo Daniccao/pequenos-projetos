@@ -35,6 +35,16 @@ def obtemSomatorio(numero_itens, numero_atual):
 
     return somatorio
 
+#Obtem o somatorio dos 3 ultimos numeros da linha de forma ainda mais rapida e simples
+def obtemSomatorioSimples(numero_itens, numero_atual):
+    
+    ultimo_numero = numero_atual + (numero_itens*2)
+
+    somatorio = ultimo_numero + (ultimo_numero - 2) + (ultimo_numero - 4)
+
+    return somatorio
+
+#Percorre as linhas e retorna o somatorio da linha desejada
 def somatorioDesejado(numero_linhas_esperado):
 
     numero_inicial = 1
@@ -44,7 +54,8 @@ def somatorioDesejado(numero_linhas_esperado):
         numero_itens = somaDois(numero_itens)
         numero_inicial = obterNumeroInicial(numero_itens, numero_inicial) 
     
-    soma_tres_ultimos = obtemSomatorio(numero_itens+2, numero_inicial) 
+    #soma_tres_ultimos = obtemSomatorio(numero_itens+2, numero_inicial) 
+    soma_tres_ultimos = obtemSomatorioSimples(numero_itens+2, numero_inicial) 
 
     return soma_tres_ultimos
 
@@ -64,11 +75,14 @@ def main(numero_linhas_esperado):
 if __name__ == "__main__":
     
     try:
-        main(1)
-        main(2)
-        main(3)
-        main(4)
+        main(1) 
+        main(2) #15
+        main(3) #45
+        main(4) #87
+        main(5) #141
+        main(100) #59991
+        main(233) #325725
         main("a")
-        main(10000000)
+        main(10000000) #599999999999991
     except Exception as e:
         print("Exception = " + str(e))
